@@ -1,7 +1,12 @@
-// Lab Activity: Functional Data Transformation Playground
+/* -----------------------------------------------------------------------
+Lab Activity: Functional Data Transformation Playground
+-------------------------------------------------------------------------*/
 
 // String Transformations
-// a. Capitalize String
+
+/*----------------------
+ a. Capitalize String
+-----------------------*/
 function capitalize(str) {
   let capitalized = str[0].toUpperCase();
   for (let i = 1; i < str.length; i++) {
@@ -13,7 +18,9 @@ function capitalize(str) {
 
 // console.log(capitalize("cat"));
 
-// b. Reverse String
+/* ----------------
+b. Reverse String
+------------------*/
 function reverse(str) {
   let revString = "";
 
@@ -25,7 +32,9 @@ function reverse(str) {
 
 // console.log(reverse("cat"));
 
-// c. Is Palindrome
+/*----------------
+ c. Is Palindrome
+------------------*/
 function isPalindrome(str) {
   let revString = "";
 
@@ -36,4 +45,4 @@ function isPalindrome(str) {
   return str === revString;
 }
 
-console.log(isPalindrome("palindrome"));
+// console.log(isPalindrome("palindrome"));
