@@ -115,4 +115,14 @@ function average(arr) {
   return total / arr.length;
 }
 
-console.log(average([1, 2, 3]));
+// console.log(average([1, 2, 3]));
+
+// Object Transformations
+/*----------------------------------------------
+ a. Full name
+-------------------------------------------------*/
+function fullName(person) {
+  return person.firstName + " " + person.lastName;
+}
+
+// console.log(fullName({ firstName: "Samuel", lastName: "Danquah" }));
