@@ -15,12 +15,25 @@ function capitalize(str) {
 
 // b. Reverse String
 function reverse(str) {
-  strArr = "";
+  let revString = "";
 
   for (let i = str.length - 1; i >= 0; i--) {
-    strArr += str[i];
+    revString += str[i];
   }
-  return strArr;
+  return revString;
 }
 
-console.log(reverse("cat"));
+// console.log(reverse("cat"));
+
+// c. Is Palindrome
+function isPalindrome(str) {
+  let revString = "";
+
+  for (let i = str.length - 1; i >= 0; i--) {
+    revString += str[i];
+  }
+
+  return str === revString;
+}
+
+console.log(isPalindrome("palindrome"));
