@@ -60,4 +60,18 @@ function wordCount(str) {
   return counter;
 }
 
-console.log(wordCount("Samuel"));
+// console.log(wordCount("Samuel"));
+
+// Array Transformations
+/*----------------------------------------------
+ a. Double
+-------------------------------------------------*/
+function double(arr) {
+  let doubledArr = [];
+
+  arr.map((number) => doubledArr.push(number * 2));
+
+  return doubledArr;
+}
+
+console.log(double([1, 2, 3, 4]));
