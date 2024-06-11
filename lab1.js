@@ -4,9 +4,9 @@ Lab Activity: Functional Data Transformation Playground
 
 // String Transformations
 
-/*----------------------
+/*----------------------------------------------
  a. Capitalize String
------------------------*/
+-------------------------------------------------*/
 function capitalize(str) {
   let capitalized = str[0].toUpperCase();
   for (let i = 1; i < str.length; i++) {
@@ -18,9 +18,9 @@ function capitalize(str) {
 
 // console.log(capitalize("cat"));
 
-/* ----------------
+/* -----------------------------------------------
 b. Reverse String
-------------------*/
+--------------------------------------------------*/
 function reverse(str) {
   let revString = "";
 
@@ -32,9 +32,9 @@ function reverse(str) {
 
 // console.log(reverse("cat"));
 
-/*----------------
+/*---------------------------------------------------
  c. Is Palindrome
-------------------*/
+------------------------------------------------------*/
 function isPalindrome(str) {
   let revString = "";
 
@@ -46,3 +46,18 @@ function isPalindrome(str) {
 }
 
 // console.log(isPalindrome("palindrome"));
+
+/*---------------------------------------------------
+ d. Word Count
+------------------------------------------------------*/
+function wordCount(str) {
+  let counter = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    counter++;
+  }
+
+  return counter;
+}
+
+console.log(wordCount("Samuel"));
