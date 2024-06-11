@@ -74,4 +74,15 @@ function double(arr) {
   return doubledArr;
 }
 
-console.log(double([1, 2, 3, 4]));
+// console.log(double([1, 2, 3, 4]));
+
+/*----------------------------------------------
+ b. Filter Even
+-------------------------------------------------*/
+function filterEven(arr) {
+  let filtered = arr.filter((number) => number % 2 === 0);
+
+  return filtered;
+}
+
+// console.log(filterEven([1, 2, 3, 4]));
