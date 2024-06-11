@@ -162,4 +162,16 @@ let people = [
   },
 ];
 
-console.log(filterByAge(people, 18));
+// console.log(filterByAge(people, 18));
+
+// 4. Function Composition
+const compose =
+  (...functions) =>
+  (input) =>
+    functions.reduceRight((acc, fn) => fn(acc), input);
+
+const revCapitalized = compose(capitalize, reverse);
+const doubledEven = compose(double, filterEven);
+
+console.log(revCapitalized("hello"));
+console.log(doubledEven([1, 2, 3, 4]));
