@@ -126,3 +126,40 @@ function fullName(person) {
 }
 
 // console.log(fullName({ firstName: "Samuel", lastName: "Danquah" }));
+
+/*----------------------------------------------
+ b. Is Adult
+-------------------------------------------------*/
+function isAdult(person) {
+  return person.age >= 18;
+}
+
+// console.log(isAdult({ firstName: "Samuel", lastName: "Danquah", age: 15 }));
+
+/*----------------------------------------------
+ c. Filter By Age
+-------------------------------------------------*/
+function filterByAge(people, minAge) {
+  return people.filter((person) => person.age >= minAge);
+}
+
+let people = [
+  {
+    name: "Sam",
+    age: 25,
+  },
+  {
+    name: "Kash",
+    age: 14,
+  },
+  {
+    name: "Ella",
+    age: 17,
+  },
+  {
+    name: "Rodney",
+    age: 30,
+  },
+];
+
+console.log(filterByAge(people, 18));
