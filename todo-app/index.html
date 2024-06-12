@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Inter Font Embeded -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <title>To-Do</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1 class="logo">Todo</h1>
+      </header>
+
+      <div class="inputs">
+        <input type="text" placeholder="Enter a todo..." />
+        <input type="text" placeholder="Add description..." />
+        <div class="date-container">
+          <input type="datetime-local" />
+          <button class="calendar">
+            <svg
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              width="15"
+              height="15"
+            >
+              <path
+                d="M3.5 0v5m8-5v5M5 8.5h5m-8.5-6h12a1 1 0 011 1v10a1 1 0 01-1 1h-12a1 1 0 01-1-1v-10a1 1 0 011-1z"
+                stroke="currentColor"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <button id="add">Add Task</button>
+      </div>
+
+      <div class="list-container">
+        <span class="little-heading">Tasks</span>
+        <ul id="todo">
+          <li>Code a todo item</li>
+        </ul>
+        <ul id="completed"></ul>
+      </div>
+    </div>
+  </body>
+</html>
