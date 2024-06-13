@@ -65,6 +65,11 @@ header {
   cursor: pointer;
 }
 
+#dueDateSelected {
+  font-size: 14px;
+  margin: 0 0 0 10px;
+}
+
 span.label {
   font-size: 12px;
   display: block;

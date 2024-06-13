@@ -72,6 +72,12 @@ const formatDueDate = (dueDateStr) => {
   }
 };
 
+dueDate.addEventListener("change", () => {
+  document.getElementById(
+    "dueDateSelected"
+  ).innerText = `Due Date: ${dueDate.value}`;
+});
+
 const addTodoToDOM = () => {
   if (titleText.value && dueDate.value) {
     if (editMode) {
@@ -227,16 +233,12 @@ for (let i = 0; i < optionButtons.length; i++) {
     this.classList.add("selected");
     if (this.classList.contains("all")) {
       sortByAll();
-      console.log(todoData);
     } else if (this.classList.contains("in-progress")) {
       sortByInProgress();
-      console.log(todoData);
     } else if (this.classList.contains("done")) {
       sortByCompleted();
-      console.log(todoData);
     } else if (this.classList.contains("due")) {
       sortByDueDateAsc();
-      console.log(todoData);
     }
   });
 }
