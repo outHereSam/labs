@@ -15,10 +15,14 @@
     <!-- CSS -->
     <link rel="stylesheet" href="style.css" />
 
+    <!-- JS -->
+    <script src="./main.js" defer></script>
+
     <title>Image Gallery with Lightbox</title>
   </head>
   <body>
     <div class="container">
+      <!-- Lightbox Background -->
       <div class="lightbox">
         <button class="close">
           <svg
@@ -34,6 +38,7 @@
           </svg>
         </button>
 
+        <!-- Lightbox Content -->
         <div class="center-content">
           <div class="highlight-options">
             <button class="prev">
@@ -66,11 +71,15 @@
               </svg>
             </button>
           </div>
+          <p class="caption">
+            This is the iPhone 15. Apple's latest in mobile phone Technology
+          </p>
         </div>
       </div>
       <h3>Tech Gallery</h3>
+      <!-- Gallery -->
       <div class="gallery">
-        <div class="image">
+        <!-- <div class="image">
           <img src="./images/1.png" alt="iPhone 15" />
         </div>
         <div class="image">
@@ -87,7 +96,7 @@
         </div>
         <div class="image">
           <img src="./images/6.png" alt="iPhone 15" />
-        </div>
+        </div> -->
       </div>
     </div>
   </body>
