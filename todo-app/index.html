@@ -12,7 +12,11 @@
       rel="stylesheet"
     />
 
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css" />
+
+    <!-- JS -->
+    <script src="./main.js" defer></script>
 
     <title>To-Do</title>
   </head>
@@ -23,10 +27,10 @@
       </header>
 
       <div class="inputs">
-        <input type="text" placeholder="Enter a todo..." />
-        <input type="text" placeholder="Add description..." />
+        <input id="title" type="text" placeholder="Enter a todo..." />
+        <input id="description" type="text" placeholder="Add description..." />
         <div class="date-container">
-          <input type="datetime-local" />
+          <input id="dueDate" type="datetime-local" required />
           <button class="calendar">
             <svg
               viewBox="0 0 15 15"
@@ -47,59 +51,14 @@
 
       <div class="list-container">
         <span class="little-heading">Tasks</span>
-        <ul id="todo">
-          <li>
-            <div class="left">
-              Code a todo item
-              <span class="due">Today</span>
-            </div>
-            <div class="buttons">
-              <button class="complete">
-                <svg
-                  viewBox="0 0 15 15"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="15"
-                  height="15"
-                >
-                  <path
-                    d="M4 7.5L7 10l4-5m-3.5 9.5a7 7 0 110-14 7 7 0 010 14z"
-                    stroke="currentColor"
-                  ></path>
-                </svg>
-              </button>
-              <button class="remove">
-                <svg
-                  viewBox="0 0 15 15"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="15"
-                  height="15"
-                >
-                  <path
-                    d="M1.5 1.5l12 12m-12 0l12-12"
-                    stroke="currentColor"
-                  ></path>
-                </svg>
-              </button>
-              <button class="edit">
-                <svg
-                  viewBox="0 0 15 15"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="15"
-                  height="15"
-                >
-                  <path
-                    d="M.5 10.5l-.354-.354-.146.147v.207h.5zm10-10l.354-.354a.5.5 0 00-.708 0L10.5.5zm4 4l.354.354a.5.5 0 000-.708L14.5 4.5zm-10 10v.5h.207l.147-.146L4.5 14.5zm-4 0H0a.5.5 0 00.5.5v-.5zm.354-3.646l10-10-.708-.708-10 10 .708.708zm9.292-10l4 4 .708-.708-4-4-.708.708zm4 3.292l-10 10 .708.708 10-10-.708-.708zM4.5 14h-4v1h4v-1zm-3.5.5v-4H0v4h1z"
-                    fill="currentColor"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-          </li>
-        </ul>
-        <ul id="completed"></ul>
+        <ul id="todo"></ul>
+      </div>
+
+      <div class="filter-options">
+        <button class="all">All</button>
+        <button class="in-progress">In Progress</button>
+        <button class="done">Completed</button>
+        <button class="due">Due</button>
       </div>
     </div>
   </body>
