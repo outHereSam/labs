@@ -46,29 +46,80 @@ const completedList = document.getElementById("completed");
 const filterOptions = document.querySelector(".filter-options");
 
 let todoData = [];
+let editMode = false;
+let editId = null;
+
+// Format Due Date
+const formatDueDate = (dueDateStr) => {
+  const dueDate = new Date(dueDateStr);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
+
+  const yesterday = new Date(today);
+  yesterday.setDate(today.getDate() - 1);
+
+  if (dueDate.getTime() === today.getTime()) {
+    return "Today";
+  } else if (dueDate.getTime() === tomorrow.getTime()) {
+    return "Tomorrow";
+  } else if (dueDate.getTime() === yesterday.getTime()) {
+    return "Yesterday";
+  } else {
+    return dueDateStr;
+  }
+};
 
 const addTodoToDOM = () => {
   if (titleText.value && dueDate.value) {
-    let todoItem = {
-      id: todoData.length + 1,
-      title: titleText.value,
-      description: description.value ? description.value : "",
-      dueDate: dueDate.value,
-      status: "In Progress",
-    };
+    if (editMode) {
+      const todoItem = todoData.find((todo) => todo.id === editId);
+      todoItem.title = titleText.value;
+      todoItem.description = description.value ? description.value : "";
+      todoItem.dueDate = dueDate.value;
+      todoItem.status = todoItem.status;
+      editMode = false;
+      editId = null;
+    } else {
+      let todoItem = {
+        id: todoData.length + 1,
+        title: titleText.value,
+        description: description.value ? description.value : "",
+        dueDate: dueDate.value,
+        status: "In Progress",
+      };
 
-    todoData.push(todoItem);
+      todoData.push(todoItem);
+    }
 
     // Render todo list
+    renderTodoList();
+
+    // Clear todo inputs
+    titleText.value = "";
+    description.value = "";
+    dueDate.value = "";
+  }
+};
+
+const renderTodoList = () => {
+  todoList.innerHTML = "";
+
+  todoData.forEach((todoItem) => {
     const taskItem = document.createElement("li");
+    if (todoItem.status === "Completed") {
+      taskItem.classList.add("completed");
+    }
 
     // Left content of list item
     const leftContent = document.createElement("div");
     leftContent.classList.add("left");
-    leftContent.innerText = titleText.value;
+    leftContent.innerText = todoItem.title;
     const dueSpan = document.createElement("span");
     dueSpan.classList.add("due");
-    dueSpan.innerHTML = dueDate.value;
+    dueSpan.innerHTML = `Due: ${formatDueDate(todoItem.dueDate)}`;
     leftContent.appendChild(dueSpan);
 
     // Icons
@@ -89,6 +140,7 @@ const addTodoToDOM = () => {
 
     removeBtn.addEventListener("click", removeTodo);
     completeBtn.addEventListener("click", completeTodo);
+    editBtn.addEventListener("click", editTodo);
 
     buttons.appendChild(completeBtn);
     buttons.appendChild(removeBtn);
@@ -100,12 +152,7 @@ const addTodoToDOM = () => {
     taskItem.setAttribute("data-id", todoItem.id);
 
     todoList.insertBefore(taskItem, todoList.childNodes[0]);
-
-    // Clear todo inputs
-    titleText.value = "";
-    description.value = "";
-    dueDate.value = "";
-  }
+  });
 };
 
 function removeTodo() {
@@ -134,7 +181,21 @@ function completeTodo() {
     item.classList.add("completed");
   }
 
-  console.log(todoData);
+  //   console.log(todoData);
+}
+
+function editTodo() {
+  const item = this.parentNode.parentNode;
+  const id = parseInt(item.getAttribute("data-id"));
+
+  const todoItem = todoData.find((todo) => todo.id === id);
+
+  titleText.value = todoItem.title;
+  description.value = todoItem.description;
+  dueDate.value = todoItem.dueDate;
+
+  editMode = true;
+  editId = id;
 }
 
 addBtn.addEventListener("click", () => {
