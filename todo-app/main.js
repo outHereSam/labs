@@ -101,6 +101,19 @@ const addTodoToDOM = () => {
     titleText.value = "";
     description.value = "";
     dueDate.value = "";
+
+    const selectedFilter = document.querySelector(".filter-options .selected");
+    if (selectedFilter) {
+      if (selectedFilter.classList.contains("all")) {
+        sortByAll();
+      } else if (selectedFilter.classList.contains("in-progress")) {
+        sortByInProgress();
+      } else if (selectedFilter.classList.contains("due")) {
+        sortByDueDateAsc();
+      }
+    } else {
+      renderSortedTodoList(todoData); // Default render
+    }
   }
 };
 
@@ -152,7 +165,7 @@ function renderSortedTodoList(tasks) {
 
     taskItem.setAttribute("data-id", todoItem.id);
 
-    todoList.appendChild(taskItem);
+    todoList.insertBefore(taskItem, todoList.childNodes[0]);
   });
 }
 
@@ -201,7 +214,6 @@ function editTodo() {
 
 addBtn.addEventListener("click", () => {
   addTodoToDOM();
-  console.log(todoData);
 });
 
 // Array of buttons
@@ -215,10 +227,16 @@ for (let i = 0; i < optionButtons.length; i++) {
     this.classList.add("selected");
     if (this.classList.contains("all")) {
       sortByAll();
+      console.log(todoData);
     } else if (this.classList.contains("in-progress")) {
       sortByInProgress();
+      console.log(todoData);
+    } else if (this.classList.contains("done")) {
+      sortByCompleted();
+      console.log(todoData);
     } else if (this.classList.contains("due")) {
       sortByDueDateAsc();
+      console.log(todoData);
     }
   });
 }
