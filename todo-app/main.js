@@ -95,7 +95,7 @@ const addTodoToDOM = () => {
     }
 
     // Render todo list
-    renderTodoList();
+    renderSortedTodoList(todoData);
 
     // Clear todo inputs
     titleText.value = "";
@@ -104,10 +104,11 @@ const addTodoToDOM = () => {
   }
 };
 
-const renderTodoList = () => {
+// Function to render sorted todo list
+function renderSortedTodoList(tasks) {
   todoList.innerHTML = "";
 
-  todoData.forEach((todoItem) => {
+  tasks.forEach((todoItem) => {
     const taskItem = document.createElement("li");
     if (todoItem.status === "Completed") {
       taskItem.classList.add("completed");
@@ -151,9 +152,9 @@ const renderTodoList = () => {
 
     taskItem.setAttribute("data-id", todoItem.id);
 
-    todoList.insertBefore(taskItem, todoList.childNodes[0]);
+    todoList.appendChild(taskItem);
   });
-};
+}
 
 function removeTodo() {
   const parent = this.parentNode.parentNode.parentNode;
@@ -164,7 +165,7 @@ function removeTodo() {
 
   todoData = todoData.filter((todo) => todo.id !== id);
 
-  console.log(todoData);
+  renderSortedTodoList(todoData);
 }
 
 function completeTodo() {
@@ -181,7 +182,7 @@ function completeTodo() {
     item.classList.add("completed");
   }
 
-  //   console.log(todoData);
+  renderSortedTodoList(todoData);
 }
 
 function editTodo() {
@@ -212,5 +213,39 @@ for (let i = 0; i < optionButtons.length; i++) {
       optionButtons[j].classList.remove("selected");
     }
     this.classList.add("selected");
+    if (this.classList.contains("all")) {
+      sortByAll();
+    } else if (this.classList.contains("in-progress")) {
+      sortByInProgress();
+    } else if (this.classList.contains("due")) {
+      sortByDueDateAsc();
+    }
   });
+}
+
+// Sortings
+// Sort by All
+function sortByAll() {
+  renderSortedTodoList(todoData); // Renders the todo list in its current order
+}
+
+// Sort by complete status ie. In Progress or Completed
+function sortByInProgress() {
+  const inProgressTasks = todoData.filter(
+    (todo) => todo.status === "In Progress"
+  );
+  renderSortedTodoList(inProgressTasks);
+}
+
+function sortByCompleted() {
+  const completedTasks = todoData.filter((todo) => todo.status === "Completed");
+  renderSortedTodoList(completedTasks);
+}
+
+// Sort by due date
+function sortByDueDateAsc() {
+  const sortedByDueDate = [...todoData].sort(
+    (a, b) => new Date(a.dueDate) - new Date(b.dueDate)
+  );
+  renderSortedTodoList(sortedByDueDate);
 }
