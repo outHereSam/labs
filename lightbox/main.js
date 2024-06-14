@@ -94,7 +94,13 @@ const updateLightBoxContent = () => {
 
   // Hide and show next and prev buttons based on current photo
   if (currentImageState === products[0].id) {
-    prevBtn.classList.add("hidden");
+    prevBtn.disabled = true;
+    prevBtn.style.opacity = 0.5;
+  }
+
+  if (currentImageState === products[products.length - 1].id) {
+    nextBtn.disabled = true;
+    nextBtn.style.opacity = 0.3;
   }
 
   const fullImage = document.createElement("img");
