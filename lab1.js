@@ -54,13 +54,15 @@ function wordCount(str) {
   let counter = 0;
 
   for (let i = 0; i < str.length; i++) {
-    counter++;
+    if (str[i + 1] === " ") {
+      counter++;
+    }
   }
 
-  return counter;
+  return counter + 1;
 }
 
-// console.log(wordCount("Samuel"));
+console.log(wordCount("Samuel is here now"));
 
 // Array Transformations
 /*----------------------------------------------
@@ -173,5 +175,5 @@ const compose =
 const revCapitalized = compose(capitalize, reverse);
 const doubledEven = compose(double, filterEven);
 
-console.log(revCapitalized("hello"));
-console.log(doubledEven([1, 2, 3, 4]));
+// console.log(revCapitalized("hello"));
+// console.log(doubledEven([1, 2, 3, 4]));
