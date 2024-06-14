@@ -68,7 +68,7 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 40px;
-  padding: 0 30px 0;
+  padding: 30px;
 }
 .prev,
 .next {
@@ -131,13 +131,13 @@ body {
 }
 
 @media only screen and (max-width: 730px) {
-  /* .highlight-options {
+  .highlight-options {
     flex-direction: column;
   }
   .prev {
-    order: 2;
+    order: 1;
   }
   .next {
     order: 3;
-  } */
+  }
 }
